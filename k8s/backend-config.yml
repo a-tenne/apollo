@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend
+  namespace: default
+data:
+  backend-url: backend-service
