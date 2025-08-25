@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-800 text-white font-sans flex justify-center;
+  }
+  #root {
+    @apply w-dvw min-h-dvh p-4;
+  }
+}

@@ -21,7 +21,7 @@ export default tseslint.config([
     },
     rules: {
       semi: ['error', 'always'],
-      '@typescript-eslint/semi': ['error', 'always'],
+      //'@typescript-eslint/semi': ['error', 'always'],
     }
   },
 ])

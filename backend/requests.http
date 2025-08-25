@@ -1,0 +1,26 @@
+###
+GET http://localhost:8080/api/v1/items
+
+###
+POST http://localhost:8080/api/v1/items
+content-type: application/json
+
+{
+    "title": "Example TODO",
+    "contents": "blablablabla blabla bla"
+}
+
+###
+PUT http://localhost:8080/api/v1/items
+content-type: application/json
+
+{
+  "id": 1,
+  "title": "Changed Title",
+  "contents": "changed contents",
+  "completed": true,
+  "creationDate": "2025-08-25"
+}
+
+###
+DELETE http://localhost:8080/api/v1/items/8

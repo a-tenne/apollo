@@ -1,41 +1,13 @@
-import { useEffect, useState } from 'react';
+import { Route, Routes } from "react-router-dom";
+import Home from "./Home";
 
-interface Person {
-  id: number;
-  name: string;
-  age: number;
-};
-
-function App() {
-  const [people, setPeople] = useState<Person[]>([]);
-  async function fetchPeople() {
-    try {
-      const res = await fetch("/api/person");
-      const people: Person[] = await res.json();
-      setPeople(people);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  useEffect(() => {
-    fetchPeople();
-  }, []);
-
+export default function App() {
   return (
     <>
-      {people.map(p => <Person person={p}></Person>)}
+      <h1 className="text-5xl mb-4 text-center font-extrabold">TODO APP</h1>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </>
   );
 }
-
-function Person({ person }: { person: Person }) {
-  return (
-    <div id={`${person.id}`}>
-      {Object.entries(person).map(([k, v]) =>
-        <div key={k}>{k}: {v}</div>
-      )}
-    </div>
-  );
-}
-
-export default App;
