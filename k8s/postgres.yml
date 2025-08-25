@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: postgres-deployment
   labels:
@@ -29,18 +29,25 @@ spec:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: postgres-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: standard
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: postgres-service
-  namespace: default
 spec:
   selector:
     app: postgres
-  type: ClusterIP
+  clusterIP: None
   ports:
   - name: postgres
-    protocol: TCP
     port: 5432
-    targetPort: 5432

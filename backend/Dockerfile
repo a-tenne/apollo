@@ -6,6 +6,9 @@ RUN mvn clean package -DskipTests
 
 FROM amazoncorretto:21-alpine
 
+# Database does not get dropped
+ENV SPRING_PROFILES_ACTIVE=prod
+
 COPY --from=build /app/target/backend.jar app.jar
 
 EXPOSE 8080
